@@ -1,4 +1,4 @@
-import Header from "@/components/Header/header";
+"use client";
 import "./globals.css";
 
 export default function RootLayout({
@@ -8,12 +8,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <div className="h-screen bg-white dark:bg-gray-900">
-          <Header></Header>
-          {children}
-        </div>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

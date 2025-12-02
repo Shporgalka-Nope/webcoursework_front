@@ -1,11 +1,24 @@
+"use client";
+
 interface Props {
-  text: string;
+  children: React.ReactNode;
+  callback?: () => void;
 }
 
-export default function HeaderButton({ text }: Props) {
+export default function HeaderButton({
+  children,
+  callback = () => {
+    return;
+  },
+}: Props) {
   return (
-    <button className="z-1 m-1 h-full p-1 font-serif text-base font-bold text-black subpixel-antialiased duration-200 ease-out hover:bg-amber-600 dark:text-white">
-      {text}
+    <button
+      onClick={callback}
+      className={
+        "mx-1 h-full p-1 duration-200 ease-out hover:rounded-full hover:bg-blue-100 hover:text-black"
+      }
+    >
+      {children}
     </button>
   );
 }
