@@ -1,6 +1,8 @@
 "use client";
 import Message from "@/Classes/Message";
+import MessagesWindow from "@/components/MessagesWindow";
 import MessageTypeArea from "@/components/MessageTypeArea";
+import MessageWindowHeader from "@/components/MessageWindowHeader";
 import UserSidebar from "@/components/UserSidebar";
 import { useEffect, useRef, useState } from "react";
 import { io, Socket } from "socket.io-client";
@@ -77,6 +79,7 @@ export default function Home() {
         (from: string, to: string, text: string) => {
           const newMessage = new Message(from, to, text);
           setMessages((prev) => [...prev, newMessage]);
+
         },
       );
     });
@@ -85,8 +88,8 @@ export default function Home() {
   return (
     <div className="flex h-screen w-screen items-center justify-center">
       <div className="grid h-160 w-350 grid-cols-[3fr_1fr] grid-rows-1 gap-1 rounded-lg border-4 border-[#FA812F] bg-[#FEF3E2] p-2">
-        <div className="flex flex-col rounded-l-md border-4 border-[#FFB22C] p-2">
-          <div className="mb-2 grow border-2 border-[#FA812F] p-2"></div>
+        <div className="h-full flex flex-col rounded-l-md border-4 border-[#FFB22C] p-2">
+          <MessagesWindow currentlyActiveId={currentlyActiveId} messageList={messages}></MessagesWindow>
           <MessageTypeArea
             CheckEnter={CheckEnter}
             SendMessage={SendMessage}
