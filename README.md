@@ -1,6 +1,6 @@
 # About
 
-# # This is only the front-end part, for backend please see [here](https://github.com/Shporgalka-Nope/webcoursework_back.git)
+## This is only the front-end part, for backend please see [here](https://github.com/Shporgalka-Nope/webcoursework_back.git)
 
 A simple web chat that utilises the Socket IO library
 
@@ -8,6 +8,6 @@ A simple web chat that utilises the Socket IO library
 - Uses TypeScript
 - Uses Tailwindcss
 
-# # To-Do
+## To-Do
 
 - Tests via Jest testing library
