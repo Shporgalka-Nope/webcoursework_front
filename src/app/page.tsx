@@ -75,6 +75,7 @@ export default function Home() {
       wsConnection.current!.on(
         "recieveMessage",
         (from: string, to: string, text: string) => {
+          console.log("New message ", from, to, text);
           const newMessage = new Message(from, to, text);
           setMessages((prev) => [...prev, newMessage]);
         },
