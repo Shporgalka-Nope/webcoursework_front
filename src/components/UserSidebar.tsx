@@ -15,9 +15,9 @@ export default function UserSidebar({
     <div className="flex-col rounded-r-md border-4 border-[#FFB22C] p-2">
       {userList.map((user: string) => (
         <UserListButton
-          currentlyActiveButtonId={currentlyActiveId}
-          onClick={() => setCurrentlyActiveId(user)}
           text={user}
+          onClick={() => setCurrentlyActiveId(user)}
+          currentlyActiveButtonId={currentlyActiveId}
           key={user}
         ></UserListButton>
       ))}

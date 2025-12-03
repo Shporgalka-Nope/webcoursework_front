@@ -1,34 +1,43 @@
 import Message from "@/Classes/Message";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 interface Props {
-    messageList : Array<Message>;
-    currentlyActiveId : string;
+  messageList: Array<Message>;
+  currentlyActiveId: string;
 }
 
-export default function MessagesWindow({messageList, currentlyActiveId} : Props) {
-    const [localMessageList, setLocalMessageList] = useState<Array<Message>>(new Array<Message>);
-    const [_currentlyActiveId, set_currentlyActiveId] = useState<string>("");
-    useEffect(() => {
-        setLocalMessageList(messageList);
-    }, [messageList])
-
-    useEffect(() => {
-        set_currentlyActiveId(currentlyActiveId);
-    }, [currentlyActiveId])
-
-    return(
-        <div className="mb-2 h-150 border-2 border-[#FA812F] p-2 overflow-y-auto flex flex-col">
-            {localMessageList.map((message : Message) => {
-                if(message.from == _currentlyActiveId) {
-                {/* Partner message */}
-                return (<div key={new Date().toLocaleString()} className="mb-1 w-fit p-2 rounded-r-lg rounded-tl-lg border-2 bg-white">{message.text}</div>);
-                } else {
-                {/* My message */}
-                <div className="grid">
-                    <div key={new Date().toLocaleString()} className="mb-1 justify-self-end w-fit p-2 rounded-l-lg rounded-tr-lg border-2 bg-white ">{message.text}</div>
-                </div>
-                }})}
-        </div>
-    )
+export default function MessagesWindow({
+  messageList,
+  currentlyActiveId,
+}: Props) {
+  return (
+    <div className="mb-2 flex h-150 flex-col overflow-y-auto border-2 border-[#FA812F] p-2">
+      {messageList.map((message: Message) => {
+        if (message.from == currentlyActiveId) {
+          {
+            /* Partner message */
+          }
+          return (
+            <div
+              key={crypto.randomUUID()}
+              className="mb-1 w-fit rounded-tl-lg rounded-r-lg border-3 border-[#F3C623] bg-white p-2 text-black"
+            >
+              {message.text}
+            </div>
+          );
+        } else if (message.to == currentlyActiveId) {
+          {
+            /* My message */
+          }
+          return (
+            <div key={crypto.randomUUID()} className="grid">
+              <div className="mb-1 w-fit justify-self-end rounded-l-lg rounded-tr-lg border-3 border-[#FA812F] bg-white p-2 text-black">
+                {message.text}
+              </div>
+            </div>
+          );
+        }
+      })}
+    </div>
+  );
 }
