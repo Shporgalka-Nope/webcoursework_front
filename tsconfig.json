@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "baseUrl": "./",
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
